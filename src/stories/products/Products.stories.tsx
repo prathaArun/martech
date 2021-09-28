@@ -5,32 +5,14 @@ import { rest } from "msw";
 import { Products } from "./Products";
 import { IProducts } from "./products.model";
 import { ComponentStory } from "@storybook/react";
-import { Button } from "../Button";
-import { useFetchData } from "./useFetchData";
 
 export default {
   component: Products,
-  title: "Example/Products",
+  title: "Martech/Products",
 };
 
-//👇The mocked data that will be used in the story
-const TestData: IProducts[] = [
-  {
-    attributes: {
-      availability: "in-stock",
-      color: "Black/Black",
-      currency: "USD",
-      e_image_urls_og: "www",
-      retailer_url: "Nike.com",
-      retailer_price: 10,
-      product_name: "Nike",
-      long_description: "",
-      e_retailer_display_domain: "Nike",
-    },
-    id: "Test",
-    type: "Test product",
-  },
-];
+// TODO: mocked data to use in story
+
 
 //TODO: Add Memoryrouter decorator to wrap the component
 const PageTemplate: ComponentStory<typeof Products> = (args, parameters) => (
@@ -45,7 +27,7 @@ ProductWithImage.parameters = {
     rest.get(
       "https://api.theurge.com.au/search-results?brands=Nike",
       (_req: any, res: any, ctx: any) => {
-        return res(ctx.json(TestData));
+        return res(ctx.json());
       }
     ),
   ],
@@ -57,7 +39,7 @@ const fetchProduct = (pageNumber: number) => {
       rest.get(
         "https://api.theurge.com.au/search-results?brands=Nike",
         (_req: any, res: any, ctx: any) => {
-          return res(ctx.json(TestData));
+          return res(ctx.json());
         }
       ),
     ],
@@ -65,7 +47,8 @@ const fetchProduct = (pageNumber: number) => {
 };
 export const ProductPagination = PageTemplate.bind({});
 ProductPagination.parameters = {
-  isPagination: true,
+  isPagination: true,  
+  isProductClickable: false
 };
 ProductPagination.argTypes = {
   onClick: { action: () => fetchProduct(0) },

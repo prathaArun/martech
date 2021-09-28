@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useFetchData } from "./useFetchData";
 import {IProducts, IProductStoryArgs} from './products.model';
 import classes from './Product.module.scss';
@@ -10,13 +10,6 @@ export const Products = ({
   }: IProductStoryArgs) => {
     const { status, products, paginationMeta, fetchProducts } = useFetchData();
     const [ProductDetailData, setProductDetailData] = useState<IProducts>();
-
-    useEffect(()=> {
-        if(products) {
-            console.log('data', products);
-            console.log("props", props)
-        }
-    },[products])
 
 const calculatePageLength = () => {
     const dom_content = [];
@@ -34,8 +27,7 @@ const calculatePageLength = () => {
 
 //TODO: Move to util function
 const redirectToProductDetails = (product:IProducts) => {
-    if(props.parameters.isProductClickable) {        
-        console.log('clicked product card')
+    if(props.parameters && props.parameters.isProductClickable) {    
         setProductDetailData(product)
     }
 }
@@ -51,7 +43,7 @@ const redirectToProductDetails = (product:IProducts) => {
     <div className={classes['product-list']}>     
          
         {products.map((item) => {
-            return(<div className={classes['product-list__product-card']} key={item.id} onClick={() => redirectToProductDetails(item)}>
+            return(<div className={`${classes['product-list__product-card']} ${props.parameters && props.parameters.isProductClickable ? classes['product-list__product-card__cursor']:""}` } key={item.id} onClick={() => redirectToProductDetails(item)}>
                 <div className={classes['product-list__product-card__product-image']}>
                     <img src={item.attributes.e_image_urls_og} alt='product' />
                 </div>

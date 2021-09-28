@@ -3,7 +3,8 @@ export interface IHeroProps {
     subTitle: string;
     title: string;    
     color?: {control:string};
-    buttonGroup: IButton[]
+    buttonGroup: IButton[];
+    isMobile?: boolean;
 }
 
 export interface IButton {

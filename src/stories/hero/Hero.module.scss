@@ -1,60 +1,107 @@
-$primaryColor: #140CA3;
+$primaryColor: #140ca3;
+$smallMaxWidth: 767.99px;
+$secondaryColor: #231f20;
+
+@mixin lowResClip {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  clip-path: circle(25%);
+  z-index: 999;
+}
 .hero-container {
-    min-height: 30vh;
-    background-color: $primaryColor;
-    padding: 100px 7.5%;
-    color: #fff;
-    position: relative;
-    background-image: url('../assets/hero_bg.jpg');
-    background-size: cover;
-    &__ellipse-wrapper {
-        position: absolute;
-        background-color: #FEF2F4;
-        position: absolute;
-    background-color: #FEF2F4;
-    /* border-radius: 50%; */
+  min-height: 30vh;
+  background-color: $primaryColor;
+  padding: 100px 7.5%;
+  color: #fff;
+  position: relative;
+  background-image: url("../assets/hero_bg.jpg");
+  background-size: cover;
+
+  &__ellipse-wrapper {
+    position: absolute;
+    background-color: #fef2f4;
+    position: absolute;
+    background-color: #fef2f4;
     height: 100%;
     width: 50%;
     z-index: 99;
-    /* clip-path: circle(50%); */
     position: absolute;
-    /* top: 16px; */
     right: 0;
     bottom: 0;
     clip-path: ellipse(270px 240px at 81% 73%);
-        
+    @media (max-width: $smallMaxWidth) {
+      @include lowResClip;
+    }
+    &__low-res {
+      @include lowResClip;
+    }
+
     &__product-img-bg {
-        // position: absolute;
-        // width: 40%;
-        height: 100%;
-        // left: calc(100% - 40%);
-        // top: 68px;
-        background-repeat: no-repeat;
-        background-image: url('../assets/hero_product_img.png');
-        background-size: contain;
-    background-position: 155% 75%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-image: url("../assets/hero_product_img.png");
+      background-size: contain;
+      background-position: 155% 75%;
+      @media (max-width: $smallMaxWidth) {
+        background-position: center;
+      }
     }
-}
-    h1 {
-        font-family: Roc Grotesk;
-        font-size: 64px;
+  }
+  &__overlay {
+    position: absolute;
+    bottom: 0;
+    background: black;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    transition: 0.5s ease;
+    color: white;
+    text-align: center;
+    min-height: 100%;
+    width: 100%;
+    left: 0;
+    z-index: 9999;
+  }
+  &__product-desc {
+    position: absolute;
+    &__low-res {
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      z-index: 99999;
+      height: 100%;
     }
+  }
+  h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 64px;
+  }
+  &__btn-group {
+    display: flex;
+    padding: 2% 0;
     &__button {
-        font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-weight: 700;
-        border: 0;
-        border-radius: 3em;
-        cursor: pointer;
-        display: inline-block;
-        line-height: 1;
-      
+      background-color: $secondaryColor;
+      color: #fff;
+      cursor: pointer;
+      height: 50px;
+      min-width: 120px;
+      border: transparent;
+      &:not(:first-child) {
+        margin-left: 1rem;
+      }
       &--primary {
-        color: $primaryColor;
-        background-color: #fff;
+        color: #fff;
       }
       &--secondary {
-        color: #333;
+        color: #fff;
         background-color: transparent;
+        border: 1px solid $secondaryColor;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
       }
       &--small {
@@ -70,4 +117,18 @@ $primaryColor: #140CA3;
         padding: 12px 24px;
       }
     }
+    @media (max-width: 767.99px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      &__button {
+        margin: 0.5rem 0;
+        width: 100%;
+        &:not(:first-child) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
 }

@@ -19,7 +19,6 @@ export const useFetchData = () => {
           })
           .then((res) => res.json())
           .then((data) => {
-              console.log('useFectdata', data)
             setStatus('sucess');
             setProducts(data.data);
             setPaginationMeta(data.meta.meta);

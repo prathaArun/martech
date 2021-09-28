@@ -1,27 +1,53 @@
-import classes from './Hero.module.scss';
-import {IHeroProps} from './hero.model';
+import classes from "./Hero.module.scss";
+import { IHeroProps } from "./hero.model";
 
-export const Hero = ({backgroundColor,...props}:IHeroProps) => {
-    console.log('props', props);
-     
-    return(<div style={{ backgroundColor }} className={`${classes['hero-container']}`}>
-        <div className={`${classes['hero-container__ellipse-wrapper']}`}>
-        <div className={`${classes['hero-container__ellipse-wrapper__product-img-bg']}`}></div>
-        </div>
-         <h1>{props?.title}</h1>
-        <p>{props?.subTitle}</p> 
-        {props.buttonGroup.map((btn) => {
-            const mode = btn.type === 'primary'  ? 'hero-container__button--primary' : 'hero-container__button--secondary';
-            const size = `hero-container__button--${btn.size}`;
-            return( <button
+export const Hero = ({ backgroundColor, ...props }: IHeroProps) => {
+  return (
+    <div style={{ backgroundColor }} className={`${classes["hero-container"]}`}>
+      <div
+        className={`${classes["hero-container__ellipse-wrapper"]}  ${
+          props?.isMobile
+            ? classes["hero-container__ellipse-wrapper__low-res"]
+            : ""
+        }`}
+      >
+        <div
+          className={`${classes["hero-container__ellipse-wrapper__product-img-bg"]}`}
+        ></div>
+      </div>
+      {props?.isMobile && (
+        <div className={`${classes["hero-container__overlay"]}`}></div>
+      )}
+
+      <div
+        className={`${classes["hero-container__product-desc"]}  ${
+          props?.isMobile
+            ? classes["hero-container__product-desc__low-res"]
+            : ""
+        }`}
+      >
+        <h1>Nike React Sneakers</h1>
+        <p>Pay in 4 interest-free installments.</p>
+        <div className={`${classes["hero-container__btn-group"]}`}>
+          {props.buttonGroup.map((btn) => {
+            const mode =
+              btn.type === "primary"
+                ? "hero-container__btn-group__button--primary"
+                : "hero-container__btn-group__button--secondary";
+            const size = `hero-container__btn-group__button--${btn.size}`;
+            return (
+              <button
                 key={btn.type}
                 type="button"
-                className={`${classes['hero-container__button']} ${classes[mode]} ${classes[size]}`}
+                className={`${classes["hero-container__btn-group__button"]} ${classes[mode]} ${classes[size]}`}
                 {...props.buttonGroup}
               >
                 {btn.label}
-              </button>)
-        })
-    }        
-    </div>)
-}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
