@@ -19,13 +19,13 @@ YARN
 # Starts Storybook in development mode
 ### `npm storybook`
 
-Functionality covered
-I have used storybook along with React and Typescript to complete this assignment. As I mentioned earlier, I take this opportunity to explore storybook.  However, I didn’t get time to explore JSON:API. So, I have used REST API.  I have summarized the functional and technical implementation I did as part of this sssignment.
-Hero only
+### `Functionality covered`
+
+### `Hero only`
 •	Implemented two components such as mobile and desktop to test lower resolution devices, and also higher resolution devices  
 •	Created two dynamic buttons (Primary, Secondary)
 •	Different design for mobile and hero banner 
- Search results only
+ ### `Search results only`
 •	Implemented 3 stories such as Product with Image, Pagination and product details navigation  
 •	Product with image displays product list with collection of products cards 
 •	Product with pagination have pagination limited to 10 pages
@@ -33,7 +33,7 @@ Hero only
 •	Product details – Product cards can be clickable that loads the product detail page
 •	Product details renders with basic styles
 
- Hero and search results (Page)
+### ` Hero and search results (Page)`
 This renders Hero and product list as a page
 Technical Implementation
 •	Typescript features and best practices
@@ -43,7 +43,7 @@ Technical Implementation
 •	Module scss
 •	Partial responsive
 
-Things to Implement
+### `Things to Implement`
 •	Unit test/ Visual regression test
 •	Content caching using JSON:API
 •	Utilise component into application
@@ -53,7 +53,7 @@ Things to Implement
 •	Few typescript error fix
 •	Routing
 •	Fully responsive
-Future Reference 
+### `Future Reference` 
 https://www.npmjs.com/package/jsonapi-react
 https://colinhacks.com/essays/building-a-spa-with-nextjs
 
