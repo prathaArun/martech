@@ -6,41 +6,59 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+The command above will make the following changes to your local environment:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+📦 Install the required dependencies.
+🛠 Setup the necessary scripts to run and build Storybook.
+🛠 Add the default Storybook configuration.
+📝 Add some boilerplate stories to get you started.
+Depending on your framework, first build your app and then check that everything worked by running:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+NPM
+YARN
+# Starts Storybook in development mode
+### `npm storybook`
 
-### `npm test`
+Functionality covered
+I have used storybook along with React and Typescript to complete this assignment. As I mentioned earlier, I take this opportunity to explore storybook.  However, I didn’t get time to explore JSON:API. So, I have used REST API.  I have summarized the functional and technical implementation I did as part of this sssignment.
+Hero only
+•	Implemented two components such as mobile and desktop to test lower resolution devices, and also higher resolution devices  
+•	Created two dynamic buttons (Primary, Secondary)
+•	Different design for mobile and hero banner 
+ Search results only
+•	Implemented 3 stories such as Product with Image, Pagination and product details navigation  
+•	Product with image displays product list with collection of products cards 
+•	Product with pagination have pagination limited to 10 pages
+•	Page click renders new list of products dynamically
+•	Product details – Product cards can be clickable that loads the product detail page
+•	Product details renders with basic styles
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ Hero and search results (Page)
+This renders Hero and product list as a page
+Technical Implementation
+•	Typescript features and best practices
+•	React functional component, hooks, custom hooks
+•	Well defined project structure
+•	BEM structure
+•	Module scss
+•	Partial responsive
 
-### `npm run build`
+Things to Implement
+•	Unit test/ Visual regression test
+•	Content caching using JSON:API
+•	Utilise component into application
+•	Use decorator and action from storybook
+•	Use mock data in story
+•	Global variables, mixins and styles
+•	Few typescript error fix
+•	Routing
+•	Fully responsive
+Future Reference 
+https://www.npmjs.com/package/jsonapi-react
+https://colinhacks.com/essays/building-a-spa-with-nextjs
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ 
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
